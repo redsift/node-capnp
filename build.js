@@ -97,6 +97,7 @@ function build() {
 		}
 	});
 	sp.stdout.pipe(process.stdout);
+	sp.stderr.pipe(process.stderr);
 }
 
 // Move it to expected location
