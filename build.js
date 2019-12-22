@@ -72,14 +72,16 @@ if (!force) {
 
 // Build it
 function build() {
+	console.log("build");
 	cp.spawn(
 		process.platform === 'win32' ? 'node-gyp.cmd' : 'node-gyp',
 		['rebuild'].concat(args),
 		{customFds: [0, 1, 2]})
 	.on('close', function(){ 
-		console.log("allala")
+		console.log("close");
 		afterBuild(); })
 	.on('exit', function(err) {
+		console.log("exit");
 		if (err) {
 			if (err === 127) {
 				console.error(
